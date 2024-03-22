@@ -1,0 +1,1 @@
+type Tag = bigint|'latest'
