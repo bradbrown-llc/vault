@@ -1,0 +1,64 @@
+{
+    "name": "easm",
+    "displayName": "EASM",
+    "version": "0.0.0",
+    "publisher": "Brad Brown, LLC",
+    "description": "Ethereum Virtual Machine (EVM) Assembly (EASM)",
+    "author": {
+        "name": "Brad Brown",
+        "email": "bradbrown@bradbrown.llc"
+    },
+    "license": "BSD-3-Clause",
+    "categories": [
+        "Programming Languages",
+        "Linters"
+    ],
+    "keywords": [
+        "assembly",
+        "ethereum",
+        "evm",
+        "web3",
+        "easm"
+    ],
+    "galleryBanner": {
+        "color": "#D8D8D8",
+        "theme": "dark"
+    },
+    "pricing": "Free",
+    "activationEvents": [
+        "onStartupFinished"
+    ],
+    "contributes": {
+        "commands": [
+            {
+                "title": "hello",
+                "category": "easm",
+                "command": "easm.hello"
+            }
+        ]
+    },
+    "engines": {
+        "vscode": "^1.85.1"
+    },
+    "main": "./out/main.js",
+    "bugs": {
+        "url": "https://github.com/bradbrown-llc/easm/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/bradbrown-llc/easm.git"
+    },
+    "homepage": "https://github.com/bradbrown-llc/easm/blob/0.0.0/README.md",
+    "scripts": {
+        "compile": "tsc"
+    },
+    "devDependencies": {
+        "@types/node": "^20.10.6",
+        "@types/vscode": "^1.85.0",
+        "typescript": "^5.3.3"
+    },
+    "dependencies": {
+        "@bradbrown-llc/easm-opcodes": "^0.0.2"
+    },
+    "type": "module"
+}

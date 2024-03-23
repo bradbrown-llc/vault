@@ -1,0 +1,16 @@
+{
+  "name": "@bradbrown-llc/easm-opcodes",
+  "version": "0.0.3",
+  "description": "Ethereum Vitrual Machine (EVM) Assembly (EASM) Opcodes",
+  "main": "./lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bradbrown-llc/easm.git"
+  },
+  "author": "Brad Brown <bradbrown@bradbrown.llc>",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/bradbrown-llc/easm/issues"
+  },
+  "homepage": "https://github.com/bradbrown-llc/easm#readme"
+}
