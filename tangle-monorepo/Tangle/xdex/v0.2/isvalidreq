@@ -1,0 +1,24 @@
+#!/usr/bin/env node
+
+module.exports = function(req) {
+    let validMethods = [
+        "addLiquidity",
+        "swap",
+        "removeLiquidity"
+    ];
+    try {
+        req.method = JSON.parse(req.data).method;
+        if (validMethods.includes(req.method))
+            require("respond").bind(this)(req);
+        return;
+    } catch (e) {
+        console.log(`e ${e}`);
+    }
+    let { res } = req;
+    res.writeHead(
+        200,
+        { "Content-Type": "text/plain" }
+    );
+    res.write("error, invalid request");
+    res.end();
+}

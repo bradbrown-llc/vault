@@ -1,0 +1,60 @@
+#!/bin/bash
+
+echo "killing processes using port 8000"
+pid=$( \
+    ss -lpH "sport = 8000" | \
+    sed -rn "s/.*pid=([[:digit:]]+).*/\1/p" \
+)
+if [[ ${pid} ]]; then kill ${pid}; fi
+echo "removing tmp if exists"
+while [ -d "tmp" ]
+do
+    rm -rf tmp 2> /dev/null
+    sleep 0.1
+done
+mkdir tmp
+echo "compiling sol files, extracting bin and abi"
+solc --bin --abi -o tmp $1 > /dev/null
+bin=$(cat tmp/$2.bin)
+abi=$(cat tmp/$2.abi)
+echo "" > tmp/password
+echo "generating new address"
+address=$(sed -rn "s/.*0x([[:alnum:]]+).*/\1/p" <<< $( \
+    geth \
+        --verbosity 2 \
+        account new \
+        --password tmp/password \
+        --datadir tmp
+    ))
+key=$(lib/getkey $address)
+echo "creating genesis.json"
+lib/powgen $address # create genesis.json for Proof-of-Work chain
+echo '{"config":{"chainId":CHAIN,"homesteadBlock":0,"eip150Block":0,"eip155Block":0,"eip158Block":0,"byzantiumBlock":0,"constantinopleBlock":0,"petersburgBlock":0,"ethash":{}},"difficulty":"1","gasLimit":"8000000","alloc":{"ADDRESS":{"balance":"100000000000000000000000"}}}' | \
+    sed "s/ADDRESS/$address/g" | \
+    sed "s/CHAIN/8000/" > \
+    tmp/genesis.json
+echo "initializing geth"
+geth \
+    --verbosity 2 \
+    --datadir tmp \
+    init tmp/genesis.json
+echo "starting geth"
+lib/cgeth $address # start chain with CPU mining
+while [ ! "$(ss -plH "sport = 8000")" ]; do sleep 0.1; done
+
+# CHAIN IS NOW LIVE
+time lib/deploy $bin "$abi" $key
+# CHAIN SHUTTING DOWN
+
+echo "killing processes using port 8000"
+pid=$( \
+    ss -lpH "sport = 8000" | \
+    sed -rn "s/.*pid=([[:digit:]]+).*/\1/p" \
+)
+if [ ${pid} ]; then kill ${pid}; fi
+echo "deleting tmp"
+while [ -d "tmp" ]
+do
+    rm -rf tmp 2> /dev/null
+    sleep 0.1
+done

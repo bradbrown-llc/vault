@@ -1,0 +1,32 @@
+#!/usr/bin/env node
+
+let hexZeroes = bytes => {
+    return "0x" + "".padStart(bytes * 2, '0')
+};
+
+module.exports = [
+    {
+        name: "pairs",
+        def:
+            `pair text unique,
+            reserve0 text,
+            reserve1 text`,
+        reset: true
+    },
+    {
+        name: "requests",
+        def:
+            `id text unique,
+            request text,
+            response text,
+            paid text default "0"`,
+         reset: true
+    },
+    {
+        name: "blocks",
+        def:
+            `chain text unique,
+            block text`,
+        reset: false
+    }
+];

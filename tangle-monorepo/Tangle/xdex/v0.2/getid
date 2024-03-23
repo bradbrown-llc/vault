@@ -1,0 +1,18 @@
+#!/usr/bin/env node
+
+module.exports = {
+    getId: async function(req, res) {
+        res.id = this.ids[req.method];
+        this.ids[req.method]++;
+        if (this.setIdImmediate)
+            clearImmediate(this.setIdImmediate);
+        this.setIdImmediate = setImmediate(async () => {
+            console.log(`setting id ${req.method} to ${res.id}`);
+            this.db.run(
+                `update ids
+                set count = ${this.ids[req.method]}
+                where name = "${req.method}"`
+            );
+        }, 1000);
+    }
+};
