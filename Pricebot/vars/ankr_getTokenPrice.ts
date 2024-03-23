@@ -1,0 +1,1 @@
+export const ankr_getTokenPrice = { jsonrpc: '2.0', method: 'ankr_getTokenPrice' }

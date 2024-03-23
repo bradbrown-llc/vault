@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "outDir": "bin",
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "skipLibCheck": true
+    },
+    "exclude": [ "tmp" ]
+}
