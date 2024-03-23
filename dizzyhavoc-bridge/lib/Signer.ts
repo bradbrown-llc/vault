@@ -1,4 +1,3 @@
-
 import { hmac } from 'npm:@noble/hashes@1.3.3/hmac'
 import { sha256 } from 'npm:@noble/hashes@1.3.3/sha256'
 import { getPublicKey, sign, etc } from 'npm:@noble/secp256k1@2.0.0'
@@ -21,7 +20,7 @@ type SignTxOpts = {
 }
 
 
-class Signer {
+export class Signer {
 
     secret:string
 
@@ -79,5 +78,3 @@ class Signer {
     }
     
 }
-
-export default Signer

@@ -1,4 +1,4 @@
-import artifact from '../lib/artifact.ts'
+import { artifact } from 'https://deno.land/x/artifact@0.0.4/mod.ts'
 import { fromFileUrl } from 'https://deno.land/std@0.211.0/path/from_file_url.ts'
 
 const cacheDir = fromFileUrl(import.meta.resolve('../.cache'))
@@ -48,4 +48,4 @@ async function save({ wget, build, version }:{ wget:Deno.ChildProcess, build:str
 
 const carves = [save]
 
-await artifact({ lock, trigger, acquire, carves })
+await artifact({ lock, trigger, acquire, carves, args: [] })

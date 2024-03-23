@@ -3,9 +3,9 @@ import { etc } from 'npm:@noble/secp256k1@2.0.0'
 import jsSha3 from 'npm:js-sha3@0.9.2'
 const { keccak256 } = jsSha3
 const { bytesToHex } = etc
-import Signer from './Signer.ts'
+import { Signer } from './Signer.ts'
 
-export default function ({
+export function signRawTx({
     signer, nonce, gasPrice, gasLimit, to, value, data, chainId
 }:{
     signer:Signer, nonce:bigint, gasPrice:bigint, gasLimit:bigint, to?:string, value?:bigint, data?:string, chainId:bigint

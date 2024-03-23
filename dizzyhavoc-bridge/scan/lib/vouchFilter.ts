@@ -1,38 +1,38 @@
-import { RLB } from 'https://deno.land/x/rlb@0.0.9/RLB.ts'
-import * as m from 'https://deno.land/x/ejra@0.2.2/methods/mod.ts'
-import { Bridgeable } from '../types/mod.ts'
-import { loglev, logstamp } from './mod.ts'
+import {
+    Chain, Logger, LogLevel,
+    updateChain, ejra, evmRlb, kvGet, machineId
+} from '../../internal.ts'
 
-const DZHV_BRIDGE_LOG_LEVEL = Number(Deno.env.get('DZHV_BRIDGE_LOG_LEVEL'))
+/**
+ * "Vouch" a filter. This ensures that the filter is at least one block wide
+ * If it is less than that, return false
+ * If it is at least one block wide, return true
+ * If the width cannot be determined, return null
+ */
+export async function vouchFilter({ chain }:{ chain:Chain }) {
 
-export async function vouchFilter({
-    chain, rlb
-}:{
-    chain:Bridgeable
-    rlb:RLB
-}) {
+    // if the width of the filter is at least 1, return true
+    if (chain.filter.toBlock >= chain.filter.fromBlock) return true
 
-    // extract some variables
-    const { filter, rpcs: [url] } = chain
-    const { fromBlock, toBlock } = filter
+    let url; if(!(url = await kvGet<string>(['rpc', chain.chainId, machineId]))) return null
 
-    // if there are blocks to scan, return true
-    if (toBlock >= fromBlock) return true
-
-    // otherwise, check if there are blocks to scan by getting the most up-to-date height
-    // consequence of failure: return null, chain being scanned is skipped (only if the filter is invalid)
-    if (DZHV_BRIDGE_LOG_LEVEL >= loglev.INFO) console.log(`INFO ${logstamp()} vouchFilter: checking height of chain ${chain.chainId}`)
-    const height = await m.height({ url, rlb })
-    // log any errors getting height
-        .catch(reason => { console.error(new Error(reason)); return null })
-
-    // if height is null, we got an error, return null
+    // get the height of the chain
+    Logger.debug(`vouchFilter: getting height of chain ${chain.chainId}`)
+    const height = await Logger.wrap(
+        ejra.methods.height({ url, rlb: evmRlb }),
+        `vouchFilter, failed to retrieve chain ${chain.chainId} height`,
+        LogLevel.DEBUG, `vouchFilter, successfully retrieved chain ${chain.chainId} height`)
     if (height === null) return null
 
-    // if, after updating the height, there are blocks to scan, update the filter object and return true
-    if (height >= fromBlock) { filter.toBlock = height; return true }
+    // if the width of the filter is at least 1
+    // update filter, then chain, then return true
+    if (height >= chain.filter.fromBlock) {
+        chain.filter.toBlock = height
+        await updateChain({ chain })
+        return true
+    }
 
-    // otherwise, return false
+    // else return false
     return false
 
 }

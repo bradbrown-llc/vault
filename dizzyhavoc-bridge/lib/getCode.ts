@@ -1,6 +1,7 @@
 import { fromFileUrl } from 'https://deno.land/std@0.213.0/path/from_file_url.ts'
-export default function (name:string) {
+export async function getCode(name:string) {
     const url = import.meta.resolve(`../contracts/${name}`)
     const path = fromFileUrl(url)
-    return Deno.readTextFileSync(path).split('\n').at(-1)
+    const text = await Deno.readTextFile(path)
+    return `0x${text.split('\n').at(-1)}`
 }
