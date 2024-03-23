@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "baseUrl": "./",
+        "paths": {
+            "@json/*": ["json/*"]
+        },
+        "resolveJsonModule": true,
+        "module": "ESNext",
+        "moduleResolution": "node",
+        "target": "foo",
+        "allowSyntheticDefaultImports": true
+    }
+}

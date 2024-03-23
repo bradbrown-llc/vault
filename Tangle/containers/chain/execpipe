@@ -1,0 +1,11 @@
+#!/bin/sh
+
+while true
+do
+    set -- $(cat ./pipe)
+    geth --exec 'personal.unlockAccount(eth.coinbase, "", 0)' attach http://localhost:8545 > /dev/null 2&>1
+    geth --exec "eth.sendTransaction({ from: eth.coinbase, to: '$1', value: '$2' })" attach http://localhost:8545 | tr -d '"\n' > ./pipe
+done
+
+# to run this in the background, persisting even if shell is terminated
+# nohup ./execpipe >/dev/null 2>&1

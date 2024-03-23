@@ -1,0 +1,52 @@
+@use 'sass:color';
+
+@use '@material/theme/color-palette';
+
+// Svelte Colors!
+@use '@material/theme/index' as theme with (
+  $primary: color-palette.$pink-500,
+  $secondary: #676778,
+  $surface: #fff,
+  $background: #fff,
+  $error: color-palette.$red-900
+);
+
+@use '@smui/paper/mixins' as paper;
+@include paper.paper-color(
+  invalid,
+  theme.$red-700,
+  theme.accessible-ink-color(theme.$red-700)
+);
+
+html,
+body {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  color: theme.$on-surface;
+  background: linear-gradient(
+    180deg, 
+    color-palette.$grey-50 0%,
+    color-palette.$pink-100 100%
+  );
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+a {
+  color: #40b3ff;
+}
+a:visited {
+  color: color.scale(#40b3ff, $lightness: -35%);
+}

@@ -1,0 +1,16 @@
+#!/bin/bash
+
+docker build -t compile . > /dev/null 2>&1
+
+docker run \
+    --init \
+    --net foo \
+    --name compile \
+    --rm \
+    -v ~/.cache/Tangle:/.cache \
+    -v ~/Tangle/contracts:/app/contracts:ro \
+    -v ~/Tangle/containers/test/pipe:/app/containers/compile/test \
+    -v ~/tmp:/tmp \
+    -it \
+    compile \
+    /bin/sh -c 'echo -e "$(lib/compile2.mjs | s818 --standard-json | jq ".errors[0].formattedMessage")"'

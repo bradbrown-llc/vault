@@ -1,0 +1,172 @@
+{
+    "0x1": {
+        "id": "0x1",
+        "abbr": "ETH",
+        "name": "Ethereum",
+        "native": {
+            "name": "Ethereum",
+            "symbol": "ETH",
+            "decimals": 18
+        },
+        "rpcUrls": ["https://rpc.ankr.com/eth"],
+        "testnet": false,
+        "n": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "u": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+        "u_decimals": 6,
+        "t": "0x5af28eb9dec75e86cdfbd2e41a474b54b211c1c2",
+        "n_u": "0xb4e16d0168e52d35cacd2c6185b44281ec28c9dc",
+        "n_t": "0x0884d61D14Fd38961a78907D7e2C29ce2f59E232"
+    },
+    "0xfa": {
+        "id": "0xfa",
+        "abbr": "FTM",
+        "name": "Fantom",
+        "native": {
+            "name": "Fantom",
+            "symbol": "FTM",
+            "decimals": 18
+        },
+        "rpcUrls": ["https://rpc.ankr.com/fantom"],
+        "testnet": false,
+        "n": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83",
+        "u": "0x04068da6c83afcfa0e13ba15a6696662335d5b75",
+        "u_decimals": 6,
+        "t": "0xd17584633bc8d190e5a14502976dad9640456d6d",
+        "n_u": "0x2b4c76d0dc16be1c31d4c1dc53bf9b45987fc75c",
+        "n_t": "0xf1e0f7679ae786c528bbb4a882412518e2fe3846"
+    },
+    "0xa86a": {
+        "id": "0xa86a",
+        "abbr": "AVAX",
+        "name": "Avalanche",
+        "native": {
+            "name": "Avalanche",
+            "symbol": "AVAX",
+            "decimals": 18
+        },
+        "rpcUrls": ["https://rpc.ankr.com/avalanche"],
+        "testnet": false,
+        "n": "0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7",
+        "u": "0xb97ef9ef8734c71904d8002f8b6bc66dd9c48a6e",
+        "u_decimals": 6,
+        "t": "0xd17584633bc8d190e5a14502976dad9640456d6d",
+        "n_u": "0xf4003f4efbe8691b60249e6afbd307abe7758adb",
+        "n_t": "0xa02f0bf793ff232fe0a7511c900494e99f0f674d"
+    },
+    "0x38": {
+        "id": "0x38",
+        "abbr": "BSC",
+        "name": "Binance Smart Chain",
+        "native": {
+            "name": "Binance Coin",
+            "symbol": "BNB",
+            "decimals": 18
+        },
+        "rpcUrls": ["https://rpc.ankr.com/bsc"],
+        "testnet": false,
+        "n": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+        "u": "0x55d398326f99059ff775485246999027b3197955",
+        "u_decimals": 18,
+        "t": "0xd17584633bc8d190e5a14502976dad9640456d6d",
+        "n_u": "0x16b9a82891338f9ba80e2d6970fdda79d1eb0dae",
+        "n_t": "0x948d96fdf3cb1a0a9196f437c271f4a7f599a694"
+    },
+    "0xa4b1": {
+        "id": "0xa4b1",
+        "abbr": "ARB",
+        "name": "Arbitrum",
+        "native": {
+            "name": "Etheruem",
+            "symbol": "ETH",
+            "decimals": 18
+        },
+        "rpcUrls": ["https://rpc.ankr.com/arbitrum"],
+        "testnet": false,
+        "n": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
+        "u": "0xff970a61a04b1ca14834a43f5de4533ebddb5cc8",
+        "u_decimals": 6,
+        "t": "0xa943f863fa69ff4f6d9022843fb861bbee45b2ce",
+        "n_u": "0x905dfcd5649217c42684f23958568e533c711aa3",
+        "n_t": "0x66535be1db9bb2f1f359a1902fdb2fe4b764c9f5"
+    },
+    "0xaa36a7": {
+        "id": "0xaa36a7",
+        "abbr": "ETH",
+        "chainName": "Sepolia Ethereum",
+        "native" :{
+            "name": "Ethereum",
+            "symbol": "ETH",
+            "decimals": 18
+        },
+        "testnet": true,
+        "rpcUrls": ["https://rpc.ankr.com/eth_sepolia"],
+        "blockExplorerUrls": ["https://sepolia.etherscan.io"],
+        "deployBlock": 2923977,
+        "n": null,
+        "u": null,
+        "u_decimals": null,
+        "t": "0x8C7A8d4058F5585e32Dd4Cef4581284c612B90Db",
+        "n_u": null,
+        "n_t": null
+    },
+    "0x61": {
+        "id": "0x61",
+        "abbr": "BSC",
+        "name": "Binance Smart Chain",
+        "native" :{
+            "name": "Binance Coin",
+            "symbol": "BNB",
+            "decimals": 18
+        },
+        "testnet": true,
+        "rpcUrls": ["https://rpc.ankr.com/bsc_testnet_chapel"],
+        "blockExplorerUrls": ["https://testnet.bscscan.com/"],
+        "deployBlock": 27336602,
+        "n": null,
+        "u": null,
+        "u_decimals": null,
+        "t": "0x8C7A8d4058F5585e32Dd4Cef4581284c612B90Db",
+        "n_u": null,
+        "n_t": null
+    },
+    "0xa869": {
+        "id": "0xa869",
+        "abbr": "AVAX",
+        "name": "Avalanche",
+        "native" :{
+            "name": "Avalanche",
+            "symbol": "AVAX",
+            "decimals": 18
+        },
+        "testnet": true,
+        "rpcUrls": ["https://rpc.ankr.com/avalanche_fuji"],
+        "blockExplorerUrls": ["https://testnet.snowtrace.io/"],
+        "deployBlock": 19038266,
+        "n": null,
+        "u": null,
+        "u_decimals": null,
+        "t": "0x8C7A8d4058F5585e32Dd4Cef4581284c612B90Db",
+        "n_u": null,
+        "n_t": null
+    },
+    "0xfa2": {
+        "id": "0xfa2",
+        "abbr": "FTM",
+        "name": "Fantom",
+        "native" : {
+            "name": "Fantom",
+            "symbol": "FTM",
+            "decimals": 18
+        },
+        "testnet": true,
+        "rpcUrls": ["https://rpc.ankr.com/fantom_testnet"],
+        "blockExplorerUrls": ["https://testnet.ftmscan.com/"],
+        "deployBlock": 13983516,
+        "n": null,
+        "u": null,
+        "u_decimals": null,
+        "t": "0x8C7A8d4058F5585e32Dd4Cef4581284c612B90Db",
+        "n_u": null,
+        "n_t": null
+    }
+}

@@ -1,0 +1,23 @@
+#!/bin/bash
+
+tar -cf - -C ~/Tangle \
+    json \
+    containers/ui | \
+docker build -t ui -f containers/ui/Dockerfile -
+
+docker run \
+    --init \
+    --net host \
+    --name ui \
+    --rm \
+    -e testkey=$testkey \
+    -v ~/Tangle/containers/ui/common:/ui/common \
+    -v ~/Tangle/containers/ui/web/index.html:/ui/web/index.html \
+    -v ~/Tangle/containers/ui/web/vite.config.ts:/ui/web/vite.config.ts \
+    -v ~/Tangle/containers/ui/web/src:/ui/web/src \
+    -v ~/Tangle/containers/ui/web/public:/ui/web/public \
+    -v ~/Tangle/json/tngl.json:/ui/web/src/components/tngl.json \
+    -v ~/Tangle/json/chains.json:/ui/web/src/components/chains.json \
+    -it \
+    ui \
+    npm run dev

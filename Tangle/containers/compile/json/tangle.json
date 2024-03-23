@@ -1,0 +1,18 @@
+{
+    "language": "Solidity",
+    "sources": {
+        "Tangle": { "urls": ["/app/contracts/Tangle/Tangle.sol"] }
+    },
+    "settings": {
+        "viaIR": true,
+        "optimizer": {
+            "enabled": true,
+            "runs": 65535
+        },
+        "outputSelection": {
+            "Tangle": {
+                "Tangle": [ "abi", "evm.bytecode.object" ]
+            }
+        }
+    }
+}

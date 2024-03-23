@@ -1,0 +1,16 @@
+#!/bin/bash
+
+docker build -t compile . > /dev/null 2>&1
+
+docker run \
+    --init \
+    --net foo \
+    --name compile \
+    --rm \
+    -v ~/.cache/Tangle:/.cache \
+    -v ~/Tangle/contracts:/app/contracts:ro \
+    -v ~/Tangle/containers/test/pipe:/app/containers/compile/test \
+    -v ~/tmp:/tmp \
+    -d \
+    compile \
+    lib/compile tangle weth factory router

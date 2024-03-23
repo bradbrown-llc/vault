@@ -1,0 +1,20 @@
+#!/bin/bash
+
+docker build -t ui2 .
+
+docker run \
+    --init \
+    --net host \
+    --name ui2 \
+    --rm \
+    -v ~/Tangle/containers/ui2/src/classes:/foo/bar/app/src/classes \
+    -v ~/Tangle/containers/ui2/src/components:/foo/bar/app/src/components \
+    -v ~/Tangle/containers/ui2/src/routes:/foo/bar/app/src/routes \
+    -v ~/Tangle/containers/ui2/src/stores:/foo/bar/app/src/stores \
+    -v ~/Tangle/containers/ui2/src/enums:/foo/bar/app/src/enums \
+    -v ~/Tangle/containers/ui2/src/theme:/foo/bar/app/src/theme \
+    -v ~/Tangle/containers/ui2/src/app.d.ts:/foo/bar/app/src/app.d.ts \
+    -v ~/Tangle/containers/ui2/src/app.html:/foo/bar/app/src/app.html \
+    -v ~/Tangle/json:/foo/json \
+    -it \
+    ui2
