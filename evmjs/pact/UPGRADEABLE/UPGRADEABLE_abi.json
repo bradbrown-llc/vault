@@ -1,0 +1,23 @@
+[
+    {
+        "inputs": [],
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+    },
+    {
+        "inputs": true,
+        "name": "CHGOWN",
+        "outputs": false,
+        "stateMutability": "nonpayable",
+        "type": "function",
+        "encoder": "CHGOWN"
+    },
+    {
+        "inputs": true,
+        "name": "SETFACET",
+        "outputs": false,
+        "stateMutability": "nonpayable",
+        "type": "function",
+        "encoder": "SETFACET"
+    }
+]
